@@ -1,0 +1,24 @@
+def solution(record):
+    answer = []
+    act_dic =[]
+    name_dic = {}
+    for i in record:
+        if len(i.split()) == 2:
+            act, id = i.split()
+            act_dic.append({act:id})
+            print("??")
+        elif len(i.split()) == 3:
+            act, id, name = i.split()
+            if act != 'Change':
+                act_dic.append({act:id})
+            name_dic[id] = name
+
+    # name_list 중복 제거.. 
+    for k in range(len(act_dic)):
+        for key, value in act_dic[k].items():
+            if key == 'Enter':
+                answer.append(name_dic[str(value)]+'님이 들어왔습니다.')
+            elif key == 'Leave':
+                answer.append(name_dic[str(value)]+'님이 나갔습니다.')
+
+    return answer
